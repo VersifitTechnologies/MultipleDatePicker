@@ -410,6 +410,13 @@
                         }
                     };
 
+                    scope.$on('changeCalendarMonth'), function(event, num){
+                        var monthTo = moment(scope.month).add(num, 'month');
+                        var oldMonth = moment(scope.month);
+                        scope.month = monthTo;
+                        scope.monthChanged(scope.month, oldMonth);
+                    };
+
                     /*Change year*/
                     scope.changeYear = function (year) {
                         scope.month = scope.month.year(parseInt(year, 10));
